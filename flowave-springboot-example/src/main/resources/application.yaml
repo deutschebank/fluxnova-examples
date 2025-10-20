@@ -8,7 +8,7 @@ spring.datasource.password: sa
 fluxnova:
   bpm:
     test-user-setup:
-      enabled: true
+      enabled: false
     generic-properties:
       properties:
         historyTimeToLive: P1D

@@ -111,7 +111,7 @@ public class UserService {
         HttpEntity<User> request = new HttpEntity<>(user, headers);
         try {
             ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
-            logger.info("User creation response: {} {}", response.getStatusCode(), response.getBody());
+            logger.info("User creation response: {} ", response.getStatusCode());
         } catch (Exception e) {
             logger.error("User creation failed for UserId:{}, error: {}",user.getProfile().getId(), e.getMessage(), e);
         }
@@ -123,7 +123,7 @@ public class UserService {
         HttpEntity<Group> request = new HttpEntity<>(group, headers);
         try {
             ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
-            logger.info("Group creation response: {} {}", response.getStatusCode(), response.getBody());
+            logger.info("Group creation response: {}", response.getStatusCode());
         } catch (Exception e) {
             logger.error("Group creation failed groupId:{}, error: {}", group.getId(), e.getMessage(), e);
         }
@@ -140,7 +140,7 @@ public class UserService {
                     request,
                     String.class
             );
-            logger.info("Group update response: {} {}", response.getStatusCode(), response.getBody());
+            logger.info("Group update response: {}", response.getStatusCode());
         } catch (Exception e) {
             logger.error("Group update failed for GroupId:{}, error: {}",groupId, e.getMessage(), e);
         }
@@ -152,7 +152,7 @@ public class UserService {
         HttpEntity<Authorization> request = new HttpEntity<>(authorization, headers);
         try {
             ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
-            logger.info("Authorization creation response: {} {}", response.getStatusCode(), response.getBody());
+            logger.info("Authorization creation response: {}", response.getStatusCode());
         } catch (Exception e) {
             logger.error("Authorization creation failed: {}", e.getMessage(), e);
         }
