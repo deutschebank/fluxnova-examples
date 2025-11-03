@@ -19,7 +19,7 @@ RUN groupadd -g 4001 fluxnova_group && adduser -G fluxnova_group -u 4001 -m -d /
 
 # Copy jar and script
 COPY --from=builder /app/fluxnova.jar fluxnova.jar
-COPY docker-script.sh docker-script.sh
+COPY fluxnova-springboot-example/docker-script.sh docker-script.sh
 
 RUN chown -R fluxnova_user:fluxnova_group /fluxnova
 
