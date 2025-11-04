@@ -5,6 +5,7 @@
 - [Prerequisites](#prerequisites)
 - [Building the Spring Boot Application Locally](#building-the-spring-boot-application-locally)
 - [Using the Published Docker Image](#using-the-published-docker-image)
+- [Running the Spring Boot Application Using the Jar from GitHub Packages](#running-the-spring-boot-application-using-the-jar-from-github-packages)
 - [Notes](#notes)
 - [Troubleshooting](#troubleshooting)
 
@@ -95,6 +96,39 @@ By default, the application uses an H2 database. All Spring Boot configurations 
 
    Open your browser and go to:  
    [http://localhost:8080](http://localhost:8080)
+
+## Running the Spring Boot Application Using the Jar from GitHub Packages
+
+You can download the pre-built jar from GitHub Packages and run the application directly.
+
+1. **Download the jar from GitHub Packages:**
+
+   - Go to: [https://github.com/finos/fluxnova-examples/packages](https://github.com/finos/fluxnova-examples/packages)
+   - Locate the latest `fluxnova-springboot-example` jar
+   - Download the jar file to your local machine.
+
+2. **Run the jar:**
+
+   ```sh
+   java -jar fluxnova-springboot-example-<version>.jar
+   ```
+
+   Replace `<version>` with the actual version of the jar you downloaded.
+
+3. **Access the Fluxnova application:**
+
+   Open your browser and go to:  
+   [http://localhost:8080](http://localhost:8080)
+
+**Note:**  
+You can override Spring Boot configuration properties using command line arguments or environment variables as needed.  
+For example, to set the admin user credentials:
+
+```sh
+java -jar fluxnova-springboot-example-<version>.jar \
+  --fluxnova.bpm.admin-user.id=demo \
+  --fluxnova.bpm.admin-user.password=demo
+```
 
 ## Notes
 
