@@ -1,0 +1,37 @@
+name: Build and Publish Docker Image
+
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Java setup
+        uses: ./.github/actions/java-setup
+
+      - name: Configure git
+        uses: ./.github/actions/configure-git
+
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+        with:
+          theme: dark
+
+      - name: Build with Maven
+        run: mvn clean deploy -f fluxnova-springboot-example/pom.xml -s fluxnova-springboot-example/settings.xml
+
+      - name: Build and publish Docker image
+        if: github.ref == 'refs/heads/main'
+        uses: ./.github/actions/build-publish-image
